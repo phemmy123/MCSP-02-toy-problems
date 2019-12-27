@@ -3,4 +3,11 @@
 // Example:
 // flatten([1,['a', 2, [8, true], 7]]) returns [1, 'a', 2, 8, true, 7]
 
-function flatten(array) {}
+const flatten = arr =>
+  arr.reduce(
+    (result, inner) =>
+      Array.isArray(inner)
+        ? result.concat(flatten(inner))
+        : result.concat(inner),
+    []
+  );
