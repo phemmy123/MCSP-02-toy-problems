@@ -29,3 +29,27 @@ var DIGIT_VALUES = {
 var translateRomanNumeral = function(romanNumeral) {
   // TODO: Implement me!
 };
+function translateRomanNumeral (romanNumeral) {
+  // create a counter variable and set the value to equal 0
+  var counter = 0;
+  // create a result variable and set the value to equal 0
+  var result = 0;
+  // iterate through the input which is the romanNumeral
+  for (var i = 0; i < romanNumeral.length; i++) {
+    // create a variable 
+    var currentLetter = DIGIT_VALUES[romanNumeral[i]];
+    var nextLetter = DIGIT_VALUES[romanNumeral[i+1]] || 0;
+    if (currentLetter > nextLetter) {
+      result += currentLetter;
+      counter += result;
+      result = 0;
+    } else if (currentLetter < nextLetter) {
+      result += currentLetter;
+      counter -= result;
+      result = 0;
+    } else {
+      result += currentLetter;
+    }
+  }
+  return counter;
+}
