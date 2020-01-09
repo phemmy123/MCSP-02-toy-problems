@@ -13,5 +13,19 @@
  */
 
 var allAnagrams = function(string) {
-  // Your code here.
-};
+  // create a variable currAnagram and set it to be equal to an empty array
+  var currAnagram = [];
+  //split string to be iterable
+  var split = string.split('');
+  // iterate through the string
+  for (var i = 0; i < split.length; i++) {
+    currAnagram.push(split[i]);
+    for (var j = 0; j < split.length; j++) {
+      if (i !== j) {
+        currAnagram.push(split[j]);
+      }
+    }
+  }
+  
+  return currAnagram
+}
